@@ -1,0 +1,35 @@
+{
+  "name": "crud-15-5-24",
+  "version": "1.0.0",
+  "description": "To Practice CRUD Operation",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamatali/crud-15-5-24.git"
+  },
+  "keywords": [
+    "CRUD",
+    "Operation",
+    "Learning",
+    "Node",
+    "Express",
+    "Backend",
+    "with",
+    "PostgreSQL"
+  ],
+  "author": "Jamat Ali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamatali/crud-15-5-24/issues"
+  },
+  "homepage": "https://github.com/jamatali/crud-15-5-24#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
