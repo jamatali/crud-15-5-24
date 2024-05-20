@@ -7,5 +7,6 @@ studentRouter.get('/students', studentController.getALL);
 studentRouter.post('/student', studentController.create);
 studentRouter.get('/student/:firstName', studentController.getSingle);
 studentRouter.put('/student/:firstName', studentController.update);
+studentRouter.delete('/student/:delete', studentController.delete);
 
 export default studentRouter;

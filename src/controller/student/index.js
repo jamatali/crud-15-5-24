@@ -1,13 +1,4 @@
-
-
-const students = [
-    {
-        firstName: "Ali",
-        lastName: "Jamat",
-        email: "engr@gmail.com",
-        phone: 66    
-    }
-]
+import StudentModel from "../../model/student/index.js";
 
 const studentController = {
     getALL: (req,res) => {
@@ -30,13 +21,19 @@ const studentController = {
             res.status(500).json({message: `Internal Server error: ${error}`})
         }
     },
-    create: (req,res) => {
+    create: async (req,res) => {
         try {
             const payload = req.body;
-            students.push(payload);
-            res.status(200).json({data: students})
+            const student = new StudentModel();
+            student.firstName = payload.firstName;
+            student.lastName = payload.lastName;
+            student.phone = payload.phone;
+            student.email = payload.email;
+            await student.save();
+            res.status(200).json({data: student});
+
         } catch (error) {
-            res.status(500).json({message: error})
+            res.status(500).json({message: `Internal Server Error: ${error}`})
         }
         
     },
