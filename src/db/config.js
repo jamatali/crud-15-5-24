@@ -7,7 +7,8 @@ const dbHost = process.env.DB_HOST;
 
 const sequelize = new Sequelize(dbName, dbUserName, dbPassword, {
     host: dbHost,
-    dialect:'postgres'
+    dialect:'postgres',
+    logging: console.log
   });
 
   const connectDb = async() => {

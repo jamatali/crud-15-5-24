@@ -1,18 +1,26 @@
 import StudentModel from "../../model/student/index.js";
 
 const studentController = {
-    getALL: (req,res) => {
+    getALL: async(req,res) => {
         try {
+
+            const students = await StudentModel.findAll({
+                where: {
+                    firstName: "Ali",
+                },
+                order: [["createdAt", "DESC"]],
+                limit: 5,
+            });
             res.status(200).json({data: students})
         } catch (error) {
-            res.status(500).json({message: error})
+            res.status(500).json({message: `Internal Server Error: ${error}`})
         }
 
     },
-    getSingle: (req,res) => {
+    getSingle: async(req,res) => {
         try {
-            const {firstName} = req.params;
-            const student = students.find((ele) =>ele.firstName==firstName);
+            const {id} = req.params;
+            const student = await StudentModel.findByPk(id);
             if(!student){
                 return res.status(400).json({message: "No Student with this name exists"});
             }
@@ -37,12 +45,12 @@ const studentController = {
         }
         
     },
-    update: (req,res)=>{
+    update: async(req,res)=>{
         try {
             const {firstName} = req.params;
             const payload = req.body;
 
-            const studentIndex = students.findIndex((ele) => ele.firstName = firstName)
+            const studentIndex = await StudentModel.findIndex((ele) => ele.firstName = firstName);
 
             if(studentIndex == -1){
                 return res.status(404).json({message: "No Student Exists"})
@@ -58,11 +66,11 @@ const studentController = {
             res.status(500).json({message: `Internal Server error: ${error}`})
         }
     },
-    delete: (req,res) => {
+    delete: async(req,res) => {
         try {
             const { firstName } = req.params;
       
-            const studentIndex = students.findIndex((ele) => ele.firstName == firstName);
+            const studentIndex = await students.findIndex((ele) => ele.firstName == firstName);
             if (studentIndex == -1) {
               return res.status(404).json({ message: "No student with this name" });
             }
