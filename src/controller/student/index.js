@@ -20,6 +20,7 @@ const studentController = {
     getSingle: async(req,res) => {
         try {
             const {id} = req.params;
+            console.log(`This is Params====>: ${req.params}`);
             const student = await StudentModel.findByPk(id);
             if(!student){
                 return res.status(400).json({message: "No Student with this name exists"});
