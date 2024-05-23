@@ -11,6 +11,6 @@ studentRouter.get('/student/:id', studentController.getSingle);
 
 studentRouter.put('/student/:id', studentController.update);
 
-studentRouter.delete('/student/:delete', studentController.delete);
+studentRouter.delete('/student/:id', studentController.delete);
 
 export default studentRouter;
