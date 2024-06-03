@@ -1,6 +1,7 @@
-import userModel from "../../model/auth/index.js";
+import userModel from "../../model/user/index.js";
 import bcrypt, { compare, hash } from "bcrypt";
 import jwt from "jsonwebtoken";
+import tokenModel from "../../model/auth/index.js";
 const koiBName = process.env.JWT_SECRET_KEY;
 const authController = {
   signUp: async (req, res) => {
@@ -62,6 +63,9 @@ const authController = {
       delete userExist.password;
 
       const jwtToken = jwt.sign(userExist, secretKey, { expiresIn: "1h" });
+      await tokenModel.create({
+        token: jwtToken
+      })
 
       res.status(200).json({ message: "Sign in successful", jwtToken });
     } catch (error) {

@@ -1,27 +1,14 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../../db/config.js";
 
-const userModel = sequelize.define(
-    "USERS", 
+const tokenModel = sequelize.define(
+    "TOKEN", 
     {
-  firstName: {
-    type: DataTypes.STRING,
+  token: {
+    type: DataTypes.STRING(500),
     allowNull: false,
-  },
-  lastName: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+  }
 }
 );
 
-export default userModel;
+export default tokenModel;

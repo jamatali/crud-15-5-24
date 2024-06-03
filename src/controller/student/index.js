@@ -2,6 +2,7 @@ import StudentModel from "../../model/student/index.js";
 
 const studentController = {
     getALL: async(req,res) => {
+        console.log(req.user);
         try {
 
             const students = await StudentModel.findAll({
